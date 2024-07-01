@@ -3,7 +3,7 @@ require('dotenv').config({path:"./config.env"});
 const {connectingDataBase} =require("./api/core/infrastructure/db")
 const morgan = require("morgan")
 const app = express();
-const { verifyTokenAndAdmin, } = require("./api/core/middleware/verify-token")
+const { verifyTokenAndAdmin, verifyToken} = require("./api/core/middleware/verify-token")
 const cors = require('cors');
 
 // Connecting to database
@@ -17,6 +17,8 @@ app.use(express.json());
 
 //path
 const authRouter = require('./api/features/auth/routers/auth');
+const carRouter = require('./api/features/cars/routes/car-router');
+const transactionRouter = require('./api/features/transactions/router/transaction-router');
 
 
 // cors libyrary
@@ -46,6 +48,11 @@ app.use((req, res, next) => {
 
 //Routs
 app.use("/api/auth", authRouter)
+app.use("/api/car", carRouter)
+app.use("/api/transaction", transactionRouter)
+
+
+
 
 
 app.use((req,res,next)=> {

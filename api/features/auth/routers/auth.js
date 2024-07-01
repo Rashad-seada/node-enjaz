@@ -1,13 +1,13 @@
 const { User, validationLoginUser,validationRegisterUser,validationSendCode ,validationConfrimCode} = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const ApiErrorCode = require("../../../core/errors/apiError") 
 const sendEmail = require("../../../core/utils/send-email")
 const {
   verifyTokenAndAdmin,
   verifyToken,
 } = require("../../../core/middleware/verify-token");
 
+const ApiErrorCode = require("../../../core/errors/apiError") 
 const express = require("express");
 router = express.Router();
 
